@@ -15,12 +15,12 @@ int main()
 	{
 		threads.push_back(std::thread(
 			// Using lambda to print the text
-			[&myMutex]() {
+			[&myMutex](int i) {
 			std::lock_guard<std::mutex> guard(myMutex);
-			std::cout << "Hello Thread\n";
+			std::cout << "Hello Thread " << i << "\n";
 			std::cout << "I'm here...\n";
 			std::cout << "...not there.\n";
-		}
+		}, i
 		));
 	}
 
